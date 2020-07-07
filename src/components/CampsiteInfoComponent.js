@@ -54,11 +54,13 @@ class CampsiteInfo extends Component {
       const comments = campsite.comments;
 
       return (
-        <div className="row">
+     <div className="container">
+          <div className="row">
           {this.renderCampsite(campsite)}
 
           {this.renderComments(comments)}
         </div>
+     </div>
       );
    }
  return <div/>;
