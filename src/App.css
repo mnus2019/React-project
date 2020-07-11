@@ -5,6 +5,9 @@ body {
 h1, h2, h3, .card-body>h5 {
 font-family: "Lobster", cursive;
 }
+li{
+  list-style: none;
+}
 
 h2 {
   color: #3046C5;
