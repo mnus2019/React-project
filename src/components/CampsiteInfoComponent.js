@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Loading } from './LoadingComponent';
-import { baseUrl } from '../shared/baseUrl';
+import { Loading } from "./LoadingComponent";
+import { baseUrl } from "../shared/baseUrl";
 import {
   Card,
   CardImg,
@@ -15,17 +15,16 @@ import {
   BreadcrumbItem,
   Label,
   Col,
- 
 } from "reactstrap";
 import { Control, LocalForm, Errors } from "react-redux-form";
 import { Link } from "react-router-dom";
 
-function RenderCampsite({ campsite}) {
+function RenderCampsite({ campsite }) {
   if (campsite) {
     return (
       <div className="col-md-5 m-1">
         <Card>
-        <CardImg top src={baseUrl + campsite.image} alt={campsite.name} />
+          <CardImg top src={baseUrl + campsite.image} alt={campsite.name} />
           <CardBody>
             <CardTitle>{campsite.name}</CardTitle>
             <CardText>{campsite.description}</CardText>
@@ -36,11 +35,11 @@ function RenderCampsite({ campsite}) {
   }
   return <div></div>;
 }
-function RenderComments({ comments,postComment,campsiteId  }) {
+function RenderComments({ comments, postComment, campsiteId }) {
   if (comments) {
     return (
       <div className="col-md-5 m-1  ">
-              <h4>Comments</h4>
+        <h4>Comments</h4>
         {comments.map((comment) => {
           return (
             <div key={comment.id}>
@@ -66,24 +65,24 @@ function RenderComments({ comments,postComment,campsiteId  }) {
 function CampsiteInfo(props) {
   if (props.isLoading) {
     return (
-        <div className="container">
-            <div className="row">
-                <Loading />
-            </div>
+      <div className="container">
+        <div className="row">
+          <Loading />
         </div>
+      </div>
     );
-}
-if (props.errMess) {
+  }
+  if (props.errMess) {
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col">
-                    <h4>{props.errMess}</h4>
-                </div>
-            </div>
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <h4>{props.errMess}</h4>
+          </div>
         </div>
+      </div>
     );
-}
+  }
   if (props.campsite) {
     return (
       <div className="container">
@@ -101,11 +100,11 @@ if (props.errMess) {
         </div>
         <div className="row">
           <RenderCampsite campsite={props.campsite} />
-          <RenderComments 
-                        comments={props.comments}
-                        postComment={props.postComment}
-                        campsiteId={props.campsite.id}
-                    />
+          <RenderComments
+            comments={props.comments}
+            postComment={props.postComment}
+            campsiteId={props.campsite.id}
+          />
         </div>
       </div>
     );
@@ -131,7 +130,12 @@ class CommentForm extends Component {
 
   handleSubmit(values) {
     this.toggleModal();
-    this.props.postComment(this.props.campsiteId, values.rating, values.author, values.text);
+    this.props.postComment(
+      this.props.campsiteId,
+      values.rating,
+      values.author,
+      values.text
+    );
   }
   render() {
     const required = (val) => val && val.length;
@@ -208,7 +212,7 @@ class CommentForm extends Component {
                 </Col>
               </div>
               <div className="form-group">
-                <Col md={{ size: 10}}>
+                <Col md={{ size: 10 }}>
                   <button type="submit" className="btn btn-primary">
                     Submit
                   </button>
