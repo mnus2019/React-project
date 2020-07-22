@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Loading } from './LoadingComponent';
 import {
   Card,
   CardImg,
@@ -62,6 +63,26 @@ function RenderComments({ comments,addComment,campsiteId  }) {
   return <div />;
 }
 function CampsiteInfo(props) {
+  if (props.isLoading) {
+    return (
+        <div className="container">
+            <div className="row">
+                <Loading />
+            </div>
+        </div>
+    );
+}
+if (props.errMess) {
+    return (
+        <div className="container">
+            <div className="row">
+                <div className="col">
+                    <h4>{props.errMess}</h4>
+                </div>
+            </div>
+        </div>
+    );
+}
   if (props.campsite) {
     return (
       <div className="container">
